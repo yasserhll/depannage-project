@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Safe area pour les appareils avec encoche */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+             env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    font-family: 'Inter', system-ui, sans-serif;
+    overscroll-behavior: none;
+    min-height: 100dvh;
+  }
+
+  /* Scrollbar personnalisée */
+  ::-webkit-scrollbar       { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+  /* Leaflet — z-index fix dans contexte fixed */
+  .leaflet-pane         { z-index: 1 !important; }
+  .leaflet-control      { z-index: 2 !important; }
+  .leaflet-top,
+  .leaflet-bottom       { z-index: 2 !important; }
+}
+
+@layer utilities {
+  /* Safe area padding bottom pour navigation mobile */
+  .safe-area-pb {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+
+  /* Gradient carte Uber-like */
+  .map-fade-bottom {
+    background: linear-gradient(to bottom, transparent 60%, #0f172a 100%);
+  }
+
+  /* Texte avec truncation multi-lignes */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
