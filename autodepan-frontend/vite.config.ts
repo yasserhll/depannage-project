@@ -128,11 +128,11 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'http://192.168.100.35:8000',
         changeOrigin: true,
       },
       '/storage': {
-        target: 'http://localhost:8000',
+        target: 'http://192.168.100.35:8000',
         changeOrigin: true,
       },
     },
